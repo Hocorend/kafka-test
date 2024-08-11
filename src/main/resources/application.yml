@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: kafka-test-client
+  kafka:
+    bootstrap-servers: localhost:19091
+    consumer:
+      group-id: "order-1"
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+
+value:
+  deserializer:
+    specific:
+      avro:
+        reader: true
